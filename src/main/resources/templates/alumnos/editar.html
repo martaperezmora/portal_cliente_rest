@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es" xmlsn:th="http://www.thymeleaf.org">
+
+<head th:replace="commons/header :: header" />
+
+<body>
+  <!-- menu -->
+  <div th:replace="commons/menu :: menu" />
+
+  <!-- formulario -->
+  <form class="row g-3" th:action="@{/notas/modificar}" method="post">
+    
+      <input type="hidden" class="form-control" codigo="codigo" name="codigo" th:value="${alumno.codigo}">
+
+      <div class="col-md-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" autofocus th:value="${alumno.nombre}">
+      </div>
+
+      <div class="col-md-3">
+        <label for="apellidos" class="form-label">Apellidos</label>
+        <input type="text" class="form-control" id="apellidos" name="apellidos" th:value="${alumno.apellidos}">
+      </div>
+
+      <div class="col-5">
+        <label for="fechaNacimiento" class="form-label">fecha nacimiento</label>
+        <input type="text" class="form-control" id="fechaNacimiento"  name="fechaNacimiento" th:value="${alumno.fechaNacimiento}">
+      </div>
+
+      <div class="col-md-3">
+        <label for="email" class="form-label">email</label>
+        <input type="text" class="form-control" id="email" name="email" th:value="${alumno.email}">
+      </div>
+
+      <div class="col-md-3">
+        <label for="email" class="form-label">telefono</label>
+        <input type="tel" class="form-control" id="telefono" name="telefono" th:value="${alumno.telefono}">
+      </div>
+
+
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">editar</button>
+      </div>
+
+  </form>
+
+  <!-- pie -->
+  <div th:replace="commons/footer :: footer" class="container" />
+
+</body>
+
+</html>

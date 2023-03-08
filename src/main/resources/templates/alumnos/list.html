@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" xmlsn:th="http://www.thymeleaf.org">
+
+<head th:replace="commons/header :: header" />
+
+<body>
+  <div th:replace="commons/menu :: menu" />
+
+  <!-- boton nuevo alumno -->
+  <a th:href="@{/alumnos/nuevo}" class="btn btn-primary" >nuevo alumno</a>
+
+  <!-- busqueda por titulo o fecha -->
+  <form th:action="@{/alumnos/busqueda}" method="post">
+    <label for="titulo">Titulo: </label>
+    <input type="text" name="titulo" id="titulo">
+    <label for="fecha">Fecha: </label>
+    <input type="text" name="fecha" id="fecha">
+    <input type="submit" name="buscar" id="buscar" value="buscar" class="btn btn-primary">
+  </form>
+
+  <!-- lista alumnos -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" >codigo</th>
+        <th scope="col" >nombre</th>
+        <th scope="col" >apellidos</th>
+        <th scope="col" >email</th>
+        <th scope="col" >fecha</th>
+        <th scope="col" >telefono</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="alumno : ${alumnos}">
+        <th scope="row" th:text="${alumno.codigo}"></th>
+        <td th:text="${alumno.nombre}"></td>
+        <td th:text="${alumno.apellidos}"></td>
+        <td th:text="${alumno.email}"></td>
+        <td th:text="${alumno.fechaNacimiento}"></td>
+        <td th:text="${alumno.telefono}"></td>
+        <td>
+          <a th:href="@{/alumnos/editar/}+${alumno.codigo}" class="btn btn-primary">editar</a>
+          <a th:href="@{/alumnos/borrar/}+${alumno.codigo}" class="btn btn-danger">borrar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <div th:replace="commons/footer :: footer" class="container" />
+
+</body>
+
+</html>
